@@ -75,6 +75,8 @@ window.onload = function init()
     document.getElementById("division").value = document.getElementById("subdivision").value;
     document.getElementById("currSpeed").value = document.getElementById("speed").value;
     document.getElementById("currScale").value = document.getElementById("scale").value;
+    document.getElementById("currScaling").value = document.getElementById("scaling").value;
+    document.getElementById("currAngle").value = document.getElementById("angle").value;
 
     render();
 };
@@ -172,4 +174,14 @@ function updateSpeed(val)
 function updateScale(val)
 {
     document.getElementById("currScale").value = val;
+}
+
+function updateScaling(val)
+{
+    document.getElementById("currScaling").value = val;
+}
+
+function updateAngle(val)
+{
+    document.getElementById("currAngle").value = val;
 }
