@@ -83,8 +83,13 @@ max="360" step="10" value="0" oninput="updateAngle(this.value)">
 <input type="checkbox" id="rotateX" name="rotateX" value="x"><br>
 <label for="rotateY">Rotate in y</label>
 <input type="checkbox" id="rotateY" name="rotateY" value="y"><br>
-<label for="texture">Texture overlay</label>
-<input type="checkbox" id="texture" name="texture" value="overlay"><br>
+<label for="texture">Translation style</label>
+<select id="style" name="style">
+    <option value="random">Random</option>
+    <option value="rotation">Rotating</option>
+    <option value="dancing">Dancing</option>
+    <option value="flipping">Flipping</option>
+</select><br>
 </div>
 <input type="button" id="start" value="Start/Stop" onclick="animate()">
 <input type="button" id="restart" value="Restart" onclick="restartAnimate()">

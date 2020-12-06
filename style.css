@@ -149,10 +149,14 @@ label
   margin-left: 30%;
 }
 
-#texture
+#style
 {
   margin-top: 3%;
-  margin-left: 22%;
+  margin-left: 20.5%;
+  width: 10vw;
+  font-family: Verdana, sans-serif;
+  background-color: rgb(160, 65, 123);
+  color: white;
 }
 
 #start
