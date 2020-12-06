@@ -79,6 +79,20 @@ window.onload = function init()
     render();
 };
 
+function resize(canvas)
+{
+    // resize canvas to fit window size
+
+    var displayWidth = canvas.clientWidth;
+    var displayHeight = canvas.clientHeight;
+
+    if (canvas.width != displayWidth || canvas.height != displayHeight)
+    {
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+    }
+}
+
 function triangle( a, b, c, color )
 {
 
