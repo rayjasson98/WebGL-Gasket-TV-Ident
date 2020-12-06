@@ -35,8 +35,14 @@ window.onload = function init()
     //
     //  Configure WebGL
     //
+    resize(canvas);
     gl.viewport( 0, 0, canvas.width, canvas.height );
-    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
+    gl.clearColor( 0.11, 0.11, 0.11, 1.0 );
+
+    // enable overflow removal
+
+    gl.enable(gl.SCISSOR_TEST);
+    gl.scissor(0, 0, canvas.width, canvas.height);
     
     // enable hidden-surface removal
     
@@ -66,6 +72,10 @@ window.onload = function init()
     gl.vertexAttribPointer( vPosition, 3, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
+    document.getElementById("division").value = document.getElementById("subdivision").value;
+    document.getElementById("currSpeed").value = document.getElementById("speed").value;
+    document.getElementById("currScale").value = document.getElementById("scale").value;
+
     render();
 };
 
@@ -75,10 +85,10 @@ function triangle( a, b, c, color )
     // add colors and vertices for one triangle
 
     var baseColors = [
-        vec3(1.0, 0.0, 0.0),
-        vec3(0.0, 1.0, 0.0),
-        vec3(0.0, 0.0, 1.0),
-        vec3(0.0, 0.0, 0.0)
+        vec3(0.0, 1.0, 1.0),
+        vec3(0.0, 0.2, 1.0),
+        vec3(0.0, 0.5, 1.0),
+        vec3(0.25, 0.0, 0.0)
     ];
 
     colors.push( baseColors[color] );
@@ -133,4 +143,19 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.drawArrays( gl.TRIANGLES, 0, points.length );
+}
+
+function updateDivision(val)
+{
+    document.getElementById("division").value = val;
+}
+
+function updateSpeed(val)
+{
+    document.getElementById("currSpeed").value = val;
+}
+
+function updateScale(val)
+{
+    document.getElementById("currScale").value = val;
 }

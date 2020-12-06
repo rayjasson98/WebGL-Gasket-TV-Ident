@@ -34,10 +34,53 @@ main()
 <script type="text/javascript" src="Common/initShaders.js"></script>
 <script type="text/javascript" src="Common/MV.js"></script>
 <script type="text/javascript" src="tv-ident.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>   
 
 <body>
-<canvas id="gl-canvas" width="512" height="512">
+<div id="menu">
+<p>Gasket Properties</p><br>
+<div id="propertybox">
+<label for="color1">Color 1</label>
+<input type="color" id="color1" class="colorpicker" name="color1" 
+value="#00ffff"><br>
+<label for="color2">Color 2</label>
+<input type="color" id="color2" class="colorpicker" name="color2" 
+value="#0080ff"><br>
+<label for="color3">Color 3</label>
+<input type="color" id="color3" class="colorpicker" name="color3" 
+value="#0033ff"><br>
+<label for="color4">Color 4</label>
+<input type="color" id="color4" class="colorpicker" name="color4" 
+value="#4000ff"><br>
+</div>
+<div id="propertybox">
+<label for="subdivision">Number of subdivision</label>
+<input type="range" id="subdivision" class="slider" name="subdivision" 
+min="1" max="5" step="1" value="3" oninput="updateDivision(this.value)">
+<input type="text" id="division" class="textbox" readonly><br>
+<label for="scale">Initial scale</label>
+<input type="range" id="scale" class="slider" name="scale" min="0.1" 
+max="1.0" step="0.1" value="0.5" oninput="updateScale(this.value)">
+<input type="text" id="currScale" class="textbox" readonly><br>
+</div>
+<p>Animation Properties</p><br>
+<div id="propertybox">
+<label for="speed">Speed of animation</label>
+<input type="range" id="speed" class="slider" name="speed" min="0.5" 
+max="5.0" step="0.5" value="1.0" oninput="updateSpeed(this.value)">
+<input type="text" id="currSpeed" class="textbox" readonly><br>
+<label for="rotateX">Rotate in x</label>
+<input type="checkbox" id="rotateX" name="rotateX" value="x"><br>
+<label for="rotateY">Rotate in y</label>
+<input type="checkbox" id="rotateY" name="rotateY" value="y"><br>
+<label for="texture">Texture overlay</label>
+<input type="checkbox" id="texture" name="texture" value="overlay"><br>
+</div>
+<input type="button" id="start" value="Start" onclick="animate()">
+<input type="button" id="stop" value="Stop" onclick="cancelAnimate()">
+</div>
+<canvas id="gl-canvas">
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 </body>
