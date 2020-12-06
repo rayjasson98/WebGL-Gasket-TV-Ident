@@ -194,8 +194,8 @@ label
 #gl-canvas
 {
   position: absolute;
-  left: 35vw;
-  width: 65vw;
+  left: 45vw;
+  width: 100vh;
   height: 100vh;
   display: block;
   box-sizing: border-box;
