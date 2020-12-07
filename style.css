@@ -106,7 +106,7 @@ label {
   cursor: pointer;
 }
 
-#subdivision {
+#division {
   margin-left: 10%;
 }
 
@@ -119,12 +119,12 @@ label {
   margin-left: 15%;
 }
 
-#scaling {
+#scaleFac {
   margin-left: 25%;
   margin-top: 4%;
 }
 
-#angle {
+#degree {
   margin-left: 23.8%;
   margin-top: 4%;
 }
@@ -134,7 +134,7 @@ label {
   margin-left: 30%;
 }
 
-#style {
+#transMode {
   margin-top: 3%;
   margin-left: 20.5%;
   width: 10vw;
@@ -143,7 +143,7 @@ label {
   color: white;
 }
 
-#start {
+#start-button {
   width: 6vw;
   height: 5vh;
   background: #139579;
@@ -153,7 +153,7 @@ label {
   left: 34%;
 }
 
-#restart {
+#restart-button {
   width: 6vw;
   height: 5vh;
   background: #f16363;
@@ -163,13 +163,13 @@ label {
   left: 54%;
 }
 
-#start:hover {
+#start-button:hover {
   cursor: pointer;
   color: black;
   background: #90EE90;
 }
 
-#restart:hover {
+#restart-button:hover {
   cursor: pointer;
   color: black;
   background: #f68c9c;
