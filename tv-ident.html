@@ -1,101 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<title>3D Sierpinski Gasket</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>3D Sierpinski Gasket TV Ident</title>
 
+    <script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+    attribute vec4 vColor;
+    varying vec4 fColor;
+    uniform vec3 theta;
+    uniform float scale;
+    uniform vec2 trans;
 
-<script id="vertex-shader" type="x-shader/x-vertex">
-attribute vec3 vPosition;
-attribute vec3 vColor;
-varying vec4 color;
+    void main() {
+        vec3 angles = radians(theta);
+        vec3 c = cos(angles);
+        vec3 s = sin(angles);
 
-void
-main()
-{
-    gl_Position = vec4(vPosition, 1.0);
-    color = vec4(vColor, 1.0);
-}
-</script>
+        mat4 rx = mat4(1.0, 0.0, 0.0, 0.0,
+                       0.0, c.x, s.x, 0.0,
+                       0.0, s.x, c.x, 0.0,
+                       0.0, 0.0, 0.0, 1.0);
 
-<script id="fragment-shader" type="x-shader/x-fragment">
-precision mediump float;
-   
-varying vec4 color;
+        mat4 ry = mat4(c.y, 0.0, -s.y, 0.0,
+                       0.0, 1.0, 0.0, 0.0,
+                       s.y, 0.0, c.y, 0.0,
+                       0.0, 0.0, 0.0, 1.0);
 
-void
-main()
-{
-    gl_FragColor = color;
-}
-</script>
+        mat4 rz = mat4(c.z, s.z, 0.0, 0.0,
+                       -s.z, c.z, 0.0, 0.0,
+                       0.0, 0.0, 1.0, 0.0,
+                       0.0, 0.0, 0.0, 1.0);
+        
+        mat4 rotationMat = rz * ry * rx;
 
-<script type="text/javascript" src="Common/webgl-utils.js"></script>
-<script type="text/javascript" src="Common/initShaders.js"></script>
-<script type="text/javascript" src="Common/MV.js"></script>
-<script type="text/javascript" src="tv-ident.js"></script>
-<link rel="stylesheet" href="style.css">
+        mat4 scalingMat = mat4(scale, 0.0, 0.0, 0.0,
+                               0.0, scale, 0.0, 0.0,
+                               0.0, 0.0, scale, 0.0,
+                               0.0, 0.0, 0.0, 1.0);
+
+        mat4 transMat = mat4(1.0, 0.0, 0.0, 0.0,
+                             0.0, 1.0, 0.0, 0.0,
+                             0.0, 0.0, 1.0, 0.0,
+                             trans[0], trans[1], 0.0, 1.0);
+
+        gl_Position = transMat * scalingMat * rotationMat * vPosition;
+        fColor = vColor;
+    }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 fColor;
+
+    void main() {
+        gl_FragColor = fColor;
+    }
+    </script>
+    <script type="text/javascript" src="Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="Common/initShaders.js"></script>
+    <script type="text/javascript" src="Common/MV.js"></script>
+    <script type="text/javascript" src="tv-ident.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>   
-
 <body>
-<div id="menu">
-<p>Gasket Properties</p><br>
-<div id="propertybox">
-<label for="color1" class="colorlabel">Color 1</label>
-<label for="color2" class="colorlabel">Color 2</label>
-<label for="color3" class="colorlabel">Color 3</label>
-<label for="color4" class="colorlabel">Color 4</label><br>
-<input type="color" id="color1" class="colorpicker" name="color1" 
-value="#00ffff">
-<input type="color" id="color2" class="colorpicker" name="color2" 
-value="#0080ff">
-<input type="color" id="color3" class="colorpicker" name="color3" 
-value="#0033ff">
-<input type="color" id="color4" class="colorpicker" name="color4" 
-value="#4000ff">
-</div>
-<div id="propertybox">
-<label for="subdivision">Number of subdivision</label>
-<input type="range" id="subdivision" class="slider" name="subdivision" 
-min="1" max="5" step="1" value="3" oninput="updateDivision(this.value)">
-<input type="text" id="division" class="textbox" readonly><br>
-<label for="scale">Initial scale</label>
-<input type="range" id="scale" class="slider" name="scale" min="0.1" 
-max="1.0" step="0.1" value="0.5" oninput="updateScale(this.value)">
-<input type="text" id="currScale" class="textbox" readonly><br>
-</div>
-<br>
-<p>Animation Properties</p><br>
-<div id="propertybox">
-<label for="speed">Speed of animation</label>
-<input type="range" id="speed" class="slider" name="speed" min="0.5" 
-max="5.0" step="0.5" value="1.0" oninput="updateSpeed(this.value)">
-<input type="text" id="currSpeed" class="textbox" readonly><br>
-<label for="scaling">Scaling factor</label>
-<input type="range" id="scaling" class="slider" name="scaling" min="0.5" 
-max="4.0" step="0.5" value="1.0" oninput="updateScaling(this.value)">
-<input type="text" id="currScaling" class="textbox" readonly><br>
-<label for="angle">Rotation angle</label>
-<input type="range" id="angle" class="slider" name="angle" min="0" 
-max="360" step="10" value="0" oninput="updateAngle(this.value)">
-<input type="text" id="currAngle" class="textbox" readonly><br>
-<label for="rotateX">Rotate in x</label>
-<input type="checkbox" id="rotateX" name="rotateX" value="x"><br>
-<label for="rotateY">Rotate in y</label>
-<input type="checkbox" id="rotateY" name="rotateY" value="y"><br>
-<label for="texture">Translation style</label>
-<select id="style" name="style">
-    <option value="random">Random</option>
-    <option value="rotation">Rotating</option>
-    <option value="dancing">Dancing</option>
-    <option value="flipping">Flipping</option>
-</select><br>
-</div>
-<input type="button" id="start" value="Start/Stop" onclick="animate()">
-<input type="button" id="restart" value="Restart" onclick="restartAnimate()">
-</div>
-<canvas id="gl-canvas">
-Oops ... your browser doesn't support the HTML5 canvas element
-</canvas>
+    <div>
+        <div id="menu">
+            <p>Gasket Properties</p><br>
+            <div id="propertybox">
+                <label for="color1" class="colorlabel">Colour 1</label>
+                <label for="color2" class="colorlabel">Colour 2</label>
+                <label for="color3" class="colorlabel">Colour 3</label>
+                <label for="color4" class="colorlabel">Colour 4</label><br>
+                <input type="color" id="color1" class="colorpicker" name="color1" value="#00ffff">
+                <input type="color" id="color2" class="colorpicker" name="color2" value="#0080ff">
+                <input type="color" id="color3" class="colorpicker" name="color3" value="#0033ff">
+                <input type="color" id="color4" class="colorpicker" name="color4" value="#4000ff">
+            </div>
+            <div id="propertybox">
+                <label for="division">Number of Subdivisions</label>
+                <input type="range" id="division" class="slider settings" name="division" min="1" max="5" step="1" value="3">
+                <input type="text" class="textbox" name="division" value="3" readonly><br>
+                <label for="scale">Initial Scale</label>
+                <input type="range" id="scale" class="slider settings" name="scale" min="1.0" max="4.0" step="1.0" value="1.0">
+                <input type="text" class="textbox" name="scale" value="1" readonly><br>
+            </div>
+            <br>
+            <p>Animation Properties</p>
+            <br>
+            <div id="propertybox">
+                <label for="speed">Speed of Animation (%)</label>
+                <input type="range" id="speed" class="slider settings" name="speed" min="100" max="800" step="100" value="200">
+                <input type="text" class="textbox" name="speed" value="200" readonly><br>
+                <label for="scaleFac">Scaling Factor</label>
+                <input type="range" id="scaleFac" class="slider settings" name="scaleFac" min="1.0" max="4.0" step="1.0" value="4.0">
+                <input type="text" class="textbox" name="scaleFac" value="4" readonly><br>
+                <label for="degree">Rotation Angle (°)</label>
+                <input type="range" id="degree" class="slider settings" name="degree" min="0" max="360" step="10" value="180">
+                <input type="text" class="textbox" name="degree" value="180" readonly><br>
+                <label for="rotateX">Rotation about x-axis</label>
+                <input type="checkbox" id="rotateX" name="rotateX" checked /><br>
+                <label for="rotateY">Rotation about y-axis</label>
+                <input type="checkbox" id="rotateY" name="rotateY" checked /><br>
+                <label for="transMode">Translation Style</label>
+                <select id="transMode" class="settings" name="transMode">
+                    <option value="0">Random</option>
+                    <option value="1">Rotating</option>
+                    <option value="2">Dancing</option>
+                    <option value="3">Flipping</option>
+                    <option value="4">Paralysing</option>
+                </select><br>
+            </div>
+            <input type="button" id="start-button" value="Start/Stop">
+            <input type="button" id="restart-button" value="Restart">
+        </div>
+        <canvas id="gl-canvas" width="512" height="512">
+            Oops ... your browser doesn't support the HTML5 canvas element
+        </canvas>
+    </div>
 </body>
 </html>

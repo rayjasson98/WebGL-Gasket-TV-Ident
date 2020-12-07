@@ -1,12 +1,11 @@
-body
-{
+body {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
   background: black;
 }
-#menu
-{
+
+#menu {
   position: absolute;
   left: 3vw;
   width: 35vw;
@@ -19,8 +18,12 @@ body
   padding-top: 2vw;
 }
 
-#propertybox
-{
+canvas {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#propertybox {
   width: 87%;
   height: fit-content;
   padding: 3%;
@@ -28,8 +31,7 @@ body
   background: rgb(30, 30, 30);
 }
 
-p
-{
+p {
   font-family: Verdana, sans-serif;
   font-weight: bold;
   color: white;
@@ -37,20 +39,17 @@ p
   margin-top: 2%;
 }
 
-label
-{
+label {
   color: #ffffff;
   font-family: verdana, sans-serif;
   font-size: smaller;
 }
 
-.colorlabel
-{
+.colorlabel {
   margin: 5%;
 }
 
-.colorpicker
-{
+.colorpicker {
   width: 5vh;
   height: 5vh;
   border: none;
@@ -62,24 +61,20 @@ label
   transform: translateY(25%);
 }
 
-.colorpicker:hover
-{
+.colorpicker:hover {
   border-radius: 50%;
   background: rgb(60, 60, 60);
 }
 
-.colorpicker::-webkit-color-swatch-wrapper
-{
+.colorpicker::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 
-.colorpicker::-webkit-color-swatch
-{
+.colorpicker::-webkit-color-swatch {
   border-radius: 50%;
 }
 
-.textbox
-{
+.textbox {
   width: 1.7vw;
   border: 2px solid aqua;
   background-color: black;
@@ -88,8 +83,7 @@ label
   padding: 0;
 }
 
-.slider
-{
+.slider {
   appearance: none;
   width: 10vw;
   height: 1vh;
@@ -98,13 +92,11 @@ label
   opacity: 0.7;
 }
 
-.slider:hover
-{
+.slider:hover {
   opacity: 1.0;
 }
 
-.slider::-webkit-slider-thumb
-{
+.slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 1vw;
@@ -114,43 +106,35 @@ label
   cursor: pointer;
 }
 
-#subdivision
-{
+#subdivision {
   margin-left: 10%;
-  
 }
 
-#scale
-{
+#scale {
   margin-left: 29%;
   margin-top: 5%;
 }
 
-#speed
-{
+#speed {
   margin-left: 15%;
 }
 
-#scaling
-{
+#scaling {
   margin-left: 25%;
   margin-top: 4%;
 }
 
-#angle
-{
+#angle {
   margin-left: 23.8%;
   margin-top: 4%;
 }
 
-#rotateX, #rotateY
-{
+#rotateX, #rotateY {
   margin-top: 3%;
   margin-left: 30%;
 }
 
-#style
-{
+#style {
   margin-top: 3%;
   margin-left: 20.5%;
   width: 10vw;
@@ -159,8 +143,7 @@ label
   color: white;
 }
 
-#start
-{
+#start {
   width: 6vw;
   height: 5vh;
   background: #139579;
@@ -170,8 +153,7 @@ label
   left: 34%;
 }
 
-#restart
-{
+#restart {
   width: 6vw;
   height: 5vh;
   background: #f16363;
@@ -181,22 +163,19 @@ label
   left: 54%;
 }
 
-#start:hover
-{
+#start:hover {
   cursor: pointer;
   color: black;
   background: #90EE90;
 }
 
-#restart:hover
-{
+#restart:hover {
   cursor: pointer;
   color: black;
   background: #f68c9c;
 }
 
-#gl-canvas
-{
+canvas {
   position: absolute;
   left: 45vw;
   width: 100vh;
