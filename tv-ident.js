@@ -3,10 +3,10 @@ var gl;
 var points = [];
 var colors = [];
 var baseColors = [
-    vec4(1.0, 0.0, 0.0, 1.0),
-    vec4(0.0, 1.0, 0.0, 1.0),
-    vec4(0.0, 0.0, 1.0, 1.0),
-    vec4(0.0, 0.0, 0.0, 1.0),
+    vec4(0.0, 1.0, 1.0, 1.0),
+    vec4(0.0, 0.2, 1.0, 1.0),
+    vec4(0.0, 0.5, 1.0, 1.0),
+    vec4(0.25, 0.0, 1.0, 1.0),
 ];
 
 window.onload = function init() {
@@ -18,7 +18,7 @@ window.onload = function init() {
         alert("WebGL isn't available"); 
     }
     gl.viewport(0, 0, canvas.width, canvas.height);
-    gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    gl.clearColor(0.157, 0.157, 0.157, 1.0);
     gl.enable(gl.DEPTH_TEST);
     const program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
@@ -111,11 +111,13 @@ window.onload = function init() {
     document.getElementById("start-button").addEventListener("click", () => {
         if (!gasket.pause) {
             gasket.pause = true;
+            document.getElementById("start-button").value = "Start";
         }
         else {
             gasket.pause = false;
             animate(gasket, controls);
             inputs.forEach(i => {i.disabled = true});
+            document.getElementById("start-button").value = "Stop";
         }
     });
 
@@ -130,6 +132,7 @@ window.onload = function init() {
         gasket.currentAnim = gasket.anims.shift();
         inputs.forEach(i => {i.disabled = false});
         restartBtn.disabled = true;
+        document.getElementById("start-button").value = "Start";
     });
 
     // initial display of static 3D gasket
