@@ -8,7 +8,7 @@ body {
 #menu {
   position: absolute;
   left: 3vw;
-  width: 35vw;
+  width: 37vw;
   height: 100vh;
   display: block;
   box-sizing: border-box;
@@ -54,8 +54,8 @@ label {
   height: 5vh;
   border: none;
   background: none;
-  margin-left: 5%;
-  margin-right: 9%;
+  margin-left: 6%;
+  margin-right: 9.5%;
   margin-bottom: 2%;
   -ms-transform: translateY(25%);
   transform: translateY(25%);
@@ -111,32 +111,32 @@ label {
 }
 
 #scale {
-  margin-left: 29%;
+  margin-left: 30%;
   margin-top: 5%;
 }
 
 #speed {
-  margin-left: 15%;
+  margin-left: 9%;
 }
 
 #scaleFac {
-  margin-left: 25%;
+  margin-left: 26%;
   margin-top: 4%;
 }
 
 #degree {
-  margin-left: 23.8%;
+  margin-left: 19.2%;
   margin-top: 4%;
 }
 
 #rotateX, #rotateY {
   margin-top: 3%;
-  margin-left: 30%;
+  margin-left: 14%;
 }
 
 #transMode {
   margin-top: 3%;
-  margin-left: 20.5%;
+  margin-left: 22%;
   width: 10vw;
   font-family: Verdana, sans-serif;
   background-color: rgb(160, 65, 123);
