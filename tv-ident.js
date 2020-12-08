@@ -4,9 +4,9 @@ var points = [];
 var colors = [];
 var baseColors = [
     vec4(0.0, 1.0, 1.0, 1.0),
-    vec4(0.0, 0.2, 1.0, 1.0),
-    vec4(0.0, 0.5, 1.0, 1.0),
-    vec4(0.25, 0.0, 1.0, 1.0),
+    vec4(0.0, 0.5, 0.1, 1.0),
+    vec4(0.0, 1.0, 0.6, 1.0),
+    vec4(0.9, 0.3, 0.2, 1.0),
 ];
 
 window.onload = function init() {
@@ -112,12 +112,14 @@ window.onload = function init() {
         if (!gasket.pause) {
             gasket.pause = true;
             document.getElementById("start-button").value = "Start";
+            document.getElementById("start-button").style.background="#117A65";
         }
         else {
             gasket.pause = false;
             animate(gasket, controls);
             inputs.forEach(i => {i.disabled = true});
             document.getElementById("start-button").value = "Stop";
+            document.getElementById("start-button").style.background="#B03A2E";
         }
     });
 
@@ -133,6 +135,7 @@ window.onload = function init() {
         inputs.forEach(i => {i.disabled = false});
         restartBtn.disabled = true;
         document.getElementById("start-button").value = "Start";
+        document.getElementById("start-button").style.background="#117A65";
     });
 
     // initial display of static 3D gasket

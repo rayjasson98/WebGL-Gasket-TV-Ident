@@ -146,33 +146,40 @@ label {
 #start-button {
   width: 6vw;
   height: 5vh;
-  background: #139579;
+  background: #117A65;
   color: white;
   border-radius: 10%;
   position: absolute;
   left: 34%;
+  font-family: Verdana, sans-serif;
 }
 
 #restart-button {
   width: 6vw;
   height: 5vh;
-  background: #f16363;
+  background: #B9770E;
   color: white;
   border-radius: 10%;
   position: absolute;
   left: 54%;
+  font-family: Verdana, sans-serif;
 }
 
 #start-button:hover {
   cursor: pointer;
   color: black;
-  background: #90EE90;
+  background: #27AE60;
 }
 
 #restart-button:hover {
   cursor: pointer;
   color: black;
-  background: #f68c9c;
+  background: #F39C12;
+}
+
+#restart-button:disabled
+{
+  opacity: 0.7;
 }
 
 canvas {
