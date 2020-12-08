@@ -45,7 +45,7 @@ window.onload = function init() {
         degree: 180,
         rotateXYZ: [false, false, true],
         scale: 1.0,
-        scaleFac: 4.0,
+        scaleFac: 2.5,
         trans: [0.0, 0.0],
         transMode: 0,
         pause: true,
@@ -108,18 +108,19 @@ window.onload = function init() {
 
     const inputs = settings.concat(checkboxes);
 
-    document.getElementById("start-button").addEventListener("click", () => {
+    const startBtn = document.getElementById("start-button");
+    startBtn.addEventListener("click", () => {
         if (!gasket.pause) {
             gasket.pause = true;
-            document.getElementById("start-button").value = "Start";
-            document.getElementById("start-button").style.background="#117A65";
+            startBtn.value = "Start";
+            startBtn.style.background="#117A65";
         }
         else {
             gasket.pause = false;
             animate(gasket, controls);
             inputs.forEach(i => {i.disabled = true});
-            document.getElementById("start-button").value = "Stop";
-            document.getElementById("start-button").style.background="#B03A2E";
+            startBtn.value = "Stop";
+            startBtn.style.background="#B03A2E";
         }
     });
 
@@ -134,8 +135,8 @@ window.onload = function init() {
         gasket.currentAnim = gasket.anims.shift();
         inputs.forEach(i => {i.disabled = false});
         restartBtn.disabled = true;
-        document.getElementById("start-button").value = "Start";
-        document.getElementById("start-button").style.background="#117A65";
+        startBtn.value = "Start";
+        startBtn.style.background="#117A65";
     });
 
     // initial display of static 3D gasket
@@ -223,12 +224,13 @@ function translation(obj) {
             obj.theta[2] += obj.speed * 0.01;
         }
     }
+    // reverse x when any vertex hits left/right
+    if (obj.vertices.some(v => Math.abs(v[0] + obj.trans[0] / obj.scale) > 0.97 / obj.scale)) {
+        obj.deltaX = -obj.deltaX;
+    }
     // reverse y when any vertex hits top/bottom
     if (obj.vertices.some(v => Math.abs(v[1] + obj.trans[1] / obj.scale) > 0.97 / obj.scale)) {
         obj.deltaY = -obj.deltaY;
-    } // reverse x when any vertex hits left/right
-    else if (obj.vertices.some(v => Math.abs(v[0] + obj.trans[0] / obj.scale) > 0.97 / obj.scale)) {
-        obj.deltaX = -obj.deltaX;
     }
     obj.trans[0] += obj.deltaX;
     obj.trans[1] += obj.deltaY;

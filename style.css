@@ -96,6 +96,10 @@ label {
   opacity: 1.0;
 }
 
+.slider:disabled {
+  background-color: grey;
+}
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
