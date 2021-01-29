@@ -21,6 +21,8 @@ The [Sierpiński Gasket](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle)
 <p align=center><img src="/docs/img/sierpinski_gasket.png"></p>
 <p align="center"><i>Examples of 3D Sierpiński Gasket</i></p>
 
+<br>
+
 ### :arrow_down_small: Geometric Transformations
 
 The 3D gasket can be manipulated in various ways using the provided input parameters:
