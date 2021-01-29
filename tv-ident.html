@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>3D Sierpinski Gasket TV Ident</title>
 
     <script id="vertex-shader" type="x-shader/x-vertex">
@@ -62,7 +63,8 @@
     <script type="text/javascript" src="Common/MV.js"></script>
     <script type="text/javascript" src="tv-ident.js"></script>
     <link rel="stylesheet" href="style.css">
-</head>   
+</head>
+
 <body>
     <div>
         <div id="menu">
@@ -79,10 +81,12 @@
             </div>
             <div id="propertybox">
                 <label for="division">Number of Subdivisions</label>
-                <input type="range" id="division" class="slider settings" name="division" min="1" max="5" step="1" value="3">
+                <input type="range" id="division" class="slider settings" name="division" min="1" max="5" step="1"
+                    value="3">
                 <input type="text" class="textbox" name="division" value="3" readonly><br>
                 <label for="scale">Initial Scale</label>
-                <input type="range" id="scale" class="slider settings" name="scale" min="0.5" max="3" step="0.5" value="1">
+                <input type="range" id="scale" class="slider settings" name="scale" min="0.5" max="3" step="0.5"
+                    value="1">
                 <input type="text" class="textbox" name="scale" value="1" readonly><br>
             </div>
             <br>
@@ -90,13 +94,16 @@
             <br>
             <div id="propertybox">
                 <label for="speed">Speed of Animation (%)</label>
-                <input type="range" id="speed" class="slider settings" name="speed" min="100" max="800" step="100" value="200">
+                <input type="range" id="speed" class="slider settings" name="speed" min="100" max="800" step="100"
+                    value="200">
                 <input type="text" class="textbox" name="speed" value="200" readonly><br>
                 <label for="scaleFac">Scaling Factor</label>
-                <input type="range" id="scaleFac" class="slider settings" name="scaleFac" min="0.5" max="3" step="0.5" value="3">
+                <input type="range" id="scaleFac" class="slider settings" name="scaleFac" min="0.5" max="3" step="0.5"
+                    value="3">
                 <input type="text" class="textbox" name="scaleFac" value="3" readonly><br>
                 <label for="degree">Rotation Angle (°)</label>
-                <input type="range" id="degree" class="slider settings" name="degree" min="0" max="360" step="10" value="180">
+                <input type="range" id="degree" class="slider settings" name="degree" min="0" max="360" step="10"
+                    value="180">
                 <input type="text" class="textbox" name="degree" value="180" readonly><br>
                 <label for="rotateX">Rotation about x-axis</label>
                 <input type="checkbox" id="rotateX" name="rotateX" checked /><br>
@@ -119,4 +126,5 @@
         </canvas>
     </div>
 </body>
+
 </html>
