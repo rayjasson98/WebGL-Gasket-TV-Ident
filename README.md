@@ -1,6 +1,6 @@
 # WebGL 3D Sierpiński Gasket TV Ident
 
-*[Ray Jasson](mailto:holmesqueen2070@yahoo.com)*<br>
+*[Ray Jasson](mailto:haojie.dev@gmail.com)*<br>
 *29/01/2021*<br>
 
 <br>
